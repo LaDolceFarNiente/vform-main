@@ -46,7 +46,7 @@ function checkInp(element) {
     } else if(!element.value.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
       element.style.outlineColor = 'var(--alert)'
       emailError.style.visibility = 'visible'
-      emailError.textContent = 'You have entered invalid e-mail address!'
+      emailError.textContent ='Email cannot be empty!'
     }else {
       element.style.outlineColor = 'var(--primary)'
     }
@@ -54,11 +54,11 @@ function checkInp(element) {
   } else if (elementAtt == 'password') {
     element.setAttribute('required', '')
     let passError = document.querySelector('.pass_up')
-    if (element.value.match(/^([^A-Za-z0-9])(?=.{8,})$/)) {
+    if (element.value.length > 8) {
       element.style.outlineColor = 'var(--success)'
       passError.style.visibility = 'hidden'
       return true
-    } else if(!element.value.match(/^([^A-Za-z0-9])(?=.{8,})$/)) {
+    } else if(element.value.length <= 0) {
       element.style.outlineColor = 'var(--alert)'
       passError.style.visibility = 'visible'
       passError.textContent = 'The password is not valid! Try again'
